@@ -1,0 +1,166 @@
+# ------------------------------------------------------------------- #
+#                                                                     #
+#                  Algorithms and Data Structures                     #
+#                                                                     #
+# --------------------------------------------------------------------#
+
+by John Shiver
+   johneshiver@gmail.com
+
+
+# ---------------------------  Arrays  ------------------------------ #
+
+Methods
+  -
+
+Advantages
+  - Sorted arrays support binary search and logarithmic query times
+
+Disadvantages
+  - linear time update
+
+#---------------------------------------------------------------------#
+
+
+# -------------------------  Linked List ---------------------------- #
+
+Methods
+  get(): Gets an element
+         O(n)
+
+  add(): Adds element to end of list
+         O(1)
+
+  insert(i): Inserts element and index i
+             O(n)
+
+  delete(): Removes element from list
+            O(1)
+
+Advantages
+  - for unsorted doubly-linked lists, insertion and deletion is O(1) time
+
+Disadvantages
+  - search takes O(n) time in work case
+
+# ------------------------------------------------------------------- #
+
+
+# ---------------------------  Trees  ------------------------------- #
+
+           a
+          / \
+         /   \
+        /     \
+       /       \
+       b       c
+      / \     / \
+     /   \   /   \
+     d   e   f   g
+    / \ / \ / \ / \
+    h i j k l m n o
+
+Methods
+  get(): Gets element in tree
+         O(h) -> h is height of the tree
+
+  insert(): only one place to insert, the root node
+            O(h) + O(1) -> insertion takes O(1) after position is found
+
+  remove(): removes element in tree
+            O(h) + O(1)
+
+Advantages
+  - All three methods are O(h)
+
+Disadvantages
+  -
+
+Terms:
+  "rooted binary tree": cosists of node called "root", together with two
+                        rooted binary trees called left and right subtrees
+
+                      - order among "brother" nodes matters in rooted trees,
+                        so left is different than right
+
+  "binary search tree": labels each node in a binary tree with a single key
+                        such that for any node labeled x, all nodes left
+                        subtree of x have keys < x while all nodes right
+                        subtree of x have keys > x.
+
+                      - for any binary tree on n nodes, and any set
+                        of n keys, there is 'exactly' one labeling that
+                        makes it a binary search tree.
+
+Notes:
+
+ - The smallest height we can hope for is when the tree is perfectly balanced
+ -
+
+#---------------------------------------------------------------------#
+
+# ---------------------------  Graphs  ------------------------------ #
+
+Notes
+
+What is a graph?
+
+- linked list + arrays organize data sequentially, they are linear
+  structures. useful for iterating over all elements or accesing
+  elements via index
+
+- other data structures, such as trees, are hierarchical structures
+  parent / child, for example.
+
+- graphs represent relationships between objects
+
+Basic objects: vertices, nodes
+Relationships between them: edges, arcs, links
+
+Examples:
+
+- Basic object: websites
+- Relationship between them: hyperlinks
+
+- Basic object: people
+- Relationship between them: friends
+
+What kind of questions can we ask of the graph:
+
+- Are two vertices adjacent?
+- Is the graph dense? Sparse?
+- How far are two vertices in the graph?
+- How many components are there in the graph?
+- Can we find a vertex with a particular key value?
+
+Size of graph: |V| + |E| : the sum of vertices and edges
+
+Path: sequence of vertices and edges that depicts hopping along the graph
+
+Representations:
+
+1. Adjacency Matrix
+    - use a matrix with rows and columns
+    - row labels and column labels represent vertices
+
+2. Adjacency List
+
+3. Adjacency Set
+  - subset of adj list representation
+
+The graph interface
+
+public interface Graph {
+    enum GraphType {
+        DIRECTED,
+        UNDIRECTED
+    }
+
+    void addEdge(int v1, int v2);
+
+    List<Integer> getAdjacentVertices(int v);
+
+}
+
+# --------------------------------------------------------------------- #
+
